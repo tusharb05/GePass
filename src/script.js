@@ -58,6 +58,9 @@ function generatePassword(e) {
 	
 }
 function getPassword() {
+	passwordArea.value = ''
+	let shuffled = '';
+	let password = '';
 	if(uppercaseCheck.checked && !lowercaseCheck.checked && !symbolsCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		passShow();
@@ -78,85 +81,65 @@ function getPassword() {
 	else if(uppercaseCheck.checked && lowercaseCheck.checked && !symbolsCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		randomLowercase();
-		let shuffled = shuffle(finalPassword)
-		let password = shuffled.substring(0,passwordLength.value);
-		passwordArea.value = password;
+
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//-----------UPPERCASE AND SYMBOLS
 	else if(uppercaseCheck.checked && symbolsCheck.checked && !lowercaseCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		randomSymbols();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//-----------UPPERCASE AND NUMBERS
 	else if(uppercaseCheck.checked && numbersCheck.checked && !lowercaseCheck.checked && !symbolsCheck.checked){
 		ranomUppercase();
 		randomNums();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//--------------LOWERCASE AND SYMBOLS	
 	else if(!uppercaseCheck.checked && symbolsCheck.checked && lowercaseCheck.checked && !numbersCheck.checked){
 		randomLowercase();
 		randomSymbols();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//---------------LOWERCASE AND NUMBERS
 	else if(!uppercaseCheck.checked && !symbolsCheck.checked && lowercaseCheck.checked && numbersCheck.checked){
 		randomLowercase();
 		randomNums();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//---------------SYMBOLS AND NUMBERS
 	else if(!uppercaseCheck.checked && symbolsCheck.checked && !lowercaseCheck.checked && numbersCheck.checked){
 		randomSymbols();
 		randomNums();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//---------------UPPERCASE, LOWERCASE AND SYMBOLS
 	else if(uppercaseCheck.checked && symbolsCheck.checked && lowercaseCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		randomLowercase();
 		randomSymbols();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);;
 	}
 	//---------------UPPERCASE, LOWERCASE AND NUMBERS
 	else if(uppercaseCheck.checked && lowercaseCheck.checked && numbersCheck.checked && !symbolsCheck.checked){
 		randomUppercase();
 		randomLowercase();
 		randomNums();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
-	}
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);	}
 	//----------------SYMBOLS, NUMBERS, LOWERCASE
 	else if(!uppercaseCheck.checked && lowercaseCheck.checked && numbersCheck.checked && symbolsCheck.checked){
 		randomLowercase();
 		randomNums();
 		randomSymbols();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//----------------SYMBOLS, NUMBERS AND UPPERCASE
 	else if(uppercaseCheck.checked && !lowercaseCheck.checked && numbersCheck.checked && symbolsCheck.checked){
 		randomUppercase();
 		randomNums();
 		randomSymbols();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffled.substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 	//----------------ALL
 	else if(uppercaseCheck.checked && lowercaseCheck.checked && numbersCheck.checked && symbolsCheck.checked){
@@ -164,9 +147,7 @@ function getPassword() {
 		randomUppercase();
 		randomSymbols();
 		randomNums();
-		let shuffled = shuffle(finalPassword);
-		let password = shuffle(shuffled).substring(0, passwordLength.value);
-		passwordArea.value = password;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
 	}
 }
 
@@ -178,23 +159,28 @@ function passShow(){
 }
 
 function randomNums() {
+	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		let s = Math.floor(Math.random()*10);
 		finalPassword += availNums[s];
 	}
 }
 function randomUppercase() {
+	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		finalPassword += availUpperCase[Math.floor(Math.random()*10)]
 	}
 }
 function randomLowercase() {
+	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		finalPassword += availLowerCase[Math.floor(Math.random()*10)]
 	}
 }
 function randomSymbols() {
+	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		finalPassword += availSymbols[Math.floor(Math.random()*10)]
 	}
 }
+
