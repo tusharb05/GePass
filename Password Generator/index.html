@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Password Generator</title>
+</head>
+<body>
+    <header>
+        <h1>GePass</h1>
+        <p style="font-weight: bold">Generate secure passwords in no time.</p>
+    </header>
+
+    <div class="container">
+        <div class="msg">
+            <!-- messages -->
+            <div class="alert alert-info alert-dismissible fade show check-alert" role="alert">
+              <strong>Alert!</strong> Check atleast one requirement for a password.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="alert alert-info alert-dismissible fade show limit-alert" role="alert">
+              <strong>Alert!</strong> Enter the limit of characters for your password.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        
+        <form action="" class="my-form">
+
+            <div class="asdf">
+                <input type="" name="pass-show" class="password form-control" placeholder="Password appears here">
+            </div>
+            
+            <br>
+            <!-- <label>Password length: </label> -->
+            <input list="passList" name="passList" id="pass-length" class="form-control" placeholder="Password Length">
+
+            <datalist id="passList">
+                <option value="8">
+                <option value="10">
+                <option value="12">
+                <option value="14">
+                <option value="16">
+                <option value="18">
+            </datalist>
+            <br>
+            <div class="attributes">
+            <label for="pass-include" class="pass-include" style="font-weight: bolder">Select what you want to include</label>
+            <br>
+            <input type="checkbox" name="capital-letters" id="uppercase"> Uppercase Letters
+            <br>
+            <input type="checkbox" name="lowercase-letters" id="lowercase"> Lowercase Letters
+            <br>
+            <input type="checkbox" name="numbers" id="numbers"> Numbers
+            <br>
+            <input type="checkbox" name="symbols" id="symbols"> Symbols
+            
+            <br>
+            <div class="btn-submit">
+                <button class="btn btn-dark">Generate</button>
+            </div>
+            
+            </div>
+
+        </form> 
+        <script src="./src/script.js"></script>       
+    </div>
+</body>
+</html>
