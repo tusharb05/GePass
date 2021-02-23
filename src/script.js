@@ -37,7 +37,8 @@ function generatePassword(e) {
 		if(a!=''){
 			console.log(document.querySelector('.asdf').children)
 			if(document.querySelector('.asdf').children.length > 1){
-				document.querySelector('.asdf').removeChild(document.querySelector('.asdf').childNodes[1])			
+				console.log(document.querySelector('.asdf').childNodes);
+				document.querySelector('.asdf').removeChild(document.querySelector('.asdf').childNodes[3])			
 			}
 
 			let buttonCopy = document.createElement('button');
@@ -53,86 +54,100 @@ function generatePassword(e) {
 			document.execCommand('copy');
 			});
 		}
+		uppercaseCheck.checked = false;
+		lowercaseCheck.checked = false;
+		symbolsCheck.checked = false;
+		numbersCheck.checked = false;
 		
 	}
 	
 }
 function getPassword() {
-	passwordArea.value = ''
-	let shuffled = '';
-	let password = '';
 	if(uppercaseCheck.checked && !lowercaseCheck.checked && !symbolsCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		passShow();
+		finalPassword = '';
 	}
 	else if(lowercaseCheck.checked && !uppercaseCheck.checked && !symbolsCheck.checked && !numbersCheck.checked){
 		randomLowercase();
 		passShow();
+		finalPassword = '';
 	}
 	else if(symbolsCheck.checked && !uppercaseCheck.checked && !lowercaseCheck.checked && !numbersCheck.checked){
 		randomSymbols();
 		passShow();
+		finalPassword = '';
 	}
 	else if(numbersCheck.checked && !symbolsCheck.checked && !uppercaseCheck.checked && !lowercaseCheck.checked){
 		randomNums();
 		passShow();
+		finalPassword = '';
 	}
 	//-----------UPPERCASE AND LOWERCASE
 	else if(uppercaseCheck.checked && lowercaseCheck.checked && !symbolsCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		randomLowercase();
-
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//-----------UPPERCASE AND SYMBOLS
 	else if(uppercaseCheck.checked && symbolsCheck.checked && !lowercaseCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		randomSymbols();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//-----------UPPERCASE AND NUMBERS
 	else if(uppercaseCheck.checked && numbersCheck.checked && !lowercaseCheck.checked && !symbolsCheck.checked){
-		ranomUppercase();
+		randomUppercase();
 		randomNums();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//--------------LOWERCASE AND SYMBOLS	
 	else if(!uppercaseCheck.checked && symbolsCheck.checked && lowercaseCheck.checked && !numbersCheck.checked){
 		randomLowercase();
 		randomSymbols();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//---------------LOWERCASE AND NUMBERS
 	else if(!uppercaseCheck.checked && !symbolsCheck.checked && lowercaseCheck.checked && numbersCheck.checked){
 		randomLowercase();
 		randomNums();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//---------------SYMBOLS AND NUMBERS
 	else if(!uppercaseCheck.checked && symbolsCheck.checked && !lowercaseCheck.checked && numbersCheck.checked){
 		randomSymbols();
 		randomNums();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//---------------UPPERCASE, LOWERCASE AND SYMBOLS
 	else if(uppercaseCheck.checked && symbolsCheck.checked && lowercaseCheck.checked && !numbersCheck.checked){
 		randomUppercase();
 		randomLowercase();
 		randomSymbols();
-		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);;
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//---------------UPPERCASE, LOWERCASE AND NUMBERS
 	else if(uppercaseCheck.checked && lowercaseCheck.checked && numbersCheck.checked && !symbolsCheck.checked){
 		randomUppercase();
 		randomLowercase();
 		randomNums();
-		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);	}
+		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);	
+		finalPassword = '';
+	}
 	//----------------SYMBOLS, NUMBERS, LOWERCASE
 	else if(!uppercaseCheck.checked && lowercaseCheck.checked && numbersCheck.checked && symbolsCheck.checked){
 		randomLowercase();
 		randomNums();
 		randomSymbols();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//----------------SYMBOLS, NUMBERS AND UPPERCASE
 	else if(uppercaseCheck.checked && !lowercaseCheck.checked && numbersCheck.checked && symbolsCheck.checked){
@@ -140,6 +155,7 @@ function getPassword() {
 		randomNums();
 		randomSymbols();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 	//----------------ALL
 	else if(uppercaseCheck.checked && lowercaseCheck.checked && numbersCheck.checked && symbolsCheck.checked){
@@ -148,6 +164,7 @@ function getPassword() {
 		randomSymbols();
 		randomNums();
 		passwordArea.value = shuffle(finalPassword).substring(0,passwordLength.value);
+		finalPassword = '';
 	}
 }
 
@@ -159,28 +176,25 @@ function passShow(){
 }
 
 function randomNums() {
-	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		let s = Math.floor(Math.random()*10);
 		finalPassword += availNums[s];
 	}
 }
 function randomUppercase() {
-	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		finalPassword += availUpperCase[Math.floor(Math.random()*10)]
 	}
 }
 function randomLowercase() {
-	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		finalPassword += availLowerCase[Math.floor(Math.random()*10)]
 	}
 }
 function randomSymbols() {
-	finalPassword = '';
 	for(i=0; i<passwordLength.value; i++){
 		finalPassword += availSymbols[Math.floor(Math.random()*10)]
 	}
 }
 
+//---------------------THE END-------------------------
