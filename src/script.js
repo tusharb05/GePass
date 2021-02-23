@@ -37,7 +37,7 @@ function generatePassword(e) {
 		if(a!=''){
 			console.log(document.querySelector('.asdf').children)
 			if(document.querySelector('.asdf').children.length > 1){
-				document.querySelector('.asdf').removeChild(document.querySelector('.asdf').chldNodes[1])			
+				document.querySelector('.asdf').removeChild(document.querySelector('.asdf').childNodes[1])			
 			}
 
 			let buttonCopy = document.createElement('button');
